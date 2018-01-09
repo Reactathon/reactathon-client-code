@@ -17,12 +17,18 @@ import PageNotFound from './components/PageNotFound/PageNotFound'
 import AccountInformation from './components/AccountInformation/AccountInformation'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 
+import { Provider } from 'react-redux'
+import createStore from './store/createStore'
+
 import './App.css';
+
+const store = createStore()
 
 class App extends Component {
     render() {
         return (
-            <Router>
+            <Provider store={store}>
+                <Router>
                 <div className="App">
                     <header className="App-header">
                         <Header/>
@@ -37,7 +43,8 @@ class App extends Component {
                         <Route component={PageNotFound} />
                     </Switch>
                 </div>
-            </Router>
+                </Router>
+            </Provider>
         );
     }
 }
