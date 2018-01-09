@@ -3,11 +3,13 @@ import React, { Component } from 'react'
 import UserProfile from './UserProfile'
 import { connect } from 'react-redux'
 
+import {loadProfile} from '../../actions/profileActions'
+
 class Profile extends Component {
 
     componentDidMount() {
         const id = this.props.match.params.id
-        console.log(`The profile id is ${id}`)
+        this.props.getProfile(id)
     }
 
     render() {
@@ -23,4 +25,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Profile)
+const mapDispatchToProps = dispatch => {
+    return {
+        getProfile: profileId => dispatch(loadProfile(profileId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
