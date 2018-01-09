@@ -1,5 +1,7 @@
 # Reactathon Application
 
+Code is this repo was generated using [Create React App] and should be used as a starting point for the Training/Reactathon.
+
 ## Set Up
 
 Install the app with yarn:
