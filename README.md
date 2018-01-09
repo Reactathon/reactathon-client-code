@@ -17,3 +17,8 @@ Run the application with yarn:
 The server should  now be runnning on port **3000**
 
 It can be accessed by hitting:  `http://localhost:3000/`
+
+
+## Sever
+
+The completed version of the application relies on a running backend server the code for this can be found at https://github.com/Reactathon/reactathon-server
