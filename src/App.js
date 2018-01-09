@@ -17,32 +17,44 @@ import PageNotFound from './components/PageNotFound/PageNotFound'
 import AccountInformation from './components/AccountInformation/AccountInformation'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 
-import { Provider } from 'react-redux'
+import {Provider} from 'react-redux'
 import createStore from './store/createStore'
+import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles'
 
-import './App.css';
+import blue from 'material-ui/colors/blue'
+
+import './App.css'
+import 'typeface-roboto'
 
 const store = createStore()
+
+const theme = createMuiTheme({
+    palette: {
+        primary: blue
+    }
+})
 
 class App extends Component {
     render() {
         return (
             <Provider store={store}>
                 <Router>
-                <div className="App">
-                    <header className="App-header">
-                        <Header/>
-                    </header>
-                    <Switch>
-                        <Route path="/about" component={About} />
-                        <Route path="/signin" component={SignIn} />
-                        <Route path="/register" component={Register} />
-                        <Route path="/profile/:id" component={Profile} />
-                        <Route path="/" exact component={Landing} />
-                        <AuthenticatedRoute path="/account-information" component={AccountInformation} />
-                        <Route component={PageNotFound} />
-                    </Switch>
-                </div>
+                    <MuiThemeProvider theme={theme}>
+                        <div className="App">
+                            <header className="App-header">
+                                <Header/>
+                            </header>
+                            <Switch>
+                                <Route path="/about" component={About}/>
+                                <Route path="/signin" component={SignIn}/>
+                                <Route path="/register" component={Register}/>
+                                <Route path="/profile/:id" component={Profile}/>
+                                <Route path="/" exact component={Landing}/>
+                                <AuthenticatedRoute path="/account-information" component={AccountInformation}/>
+                                <Route component={PageNotFound}/>
+                            </Switch>
+                        </div>
+                    </MuiThemeProvider>
                 </Router>
             </Provider>
         );
