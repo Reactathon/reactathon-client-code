@@ -1,10 +1,7 @@
 import { SET_USER } from '../actions/userActionTypes'
 
-const mockUser = {
-    isAuthenticated: true
-}
 
-const userReducer = (state = mockUser, action) => {
+const userReducer = (state = {}, action) => {
 
     switch (action.type) {
         case SET_USER:

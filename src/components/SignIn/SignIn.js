@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { loginUser } from '../../actions/userActions'
 
 import './SignIn.css'
@@ -38,6 +39,13 @@ class SignIn extends Component {
     }
 
     render() {
+
+        if(this.props.isAuthenticated) {
+            return <Redirect to={{
+                pathname: '/',
+            }}/>
+        }
+
         return (
             <div className="signin-container">
                 <h1>Sign In</h1>
@@ -56,4 +64,10 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SignIn)
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.user.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
