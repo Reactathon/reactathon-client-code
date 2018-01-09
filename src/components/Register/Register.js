@@ -5,7 +5,7 @@ class Register extends Component {
     render() {
         return (
             <div>
-                TODO: Registration Page
+                Registration Page
             </div>
         )
     }
